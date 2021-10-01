@@ -30,6 +30,13 @@ function App() {
   }, [courses, selectedGroup]);
   return (
     <div className="flex flex-col min-h-screen h-full w-full bg-indigo-300 items-center">
+      <div className="flex flex-col gap-1 self-start m-2">
+        <h4 className="font-semibold">Legenda</h4>
+        <p>Wykłady zdalnie - zielony</p>
+        <p>Wykłady stacj. - niebieski</p>
+        <p>Laboratoria - różowy</p>
+        <p>Ćwiczenia - żółty</p>
+      </div>
       <div className="flex gap-2 justify-center items-center">
         <p className="text-xl">Twoja grupa</p>
         <select
