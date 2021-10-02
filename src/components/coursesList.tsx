@@ -23,7 +23,7 @@ const CoursesList = () => {
         <h2>Poniedziałek</h2>
         {filteredCoursesByDay?.monday?.map((course: Course) => {
           return (
-            <div className="w-full grid grid-cols-2">
+            <div key={course.id} className="w-full grid grid-cols-2">
               <p>{course.hour}</p>
               <CourseWidget color={getBgColor(course)} course={course} />
             </div>
@@ -34,7 +34,7 @@ const CoursesList = () => {
         <h2>Wtorek</h2>
         {filteredCoursesByDay?.tuesday?.map((course: Course) => {
           return (
-            <div className="w-full grid grid-cols-2">
+            <div key={course.id} className="w-full grid grid-cols-2">
               <p className="">{course.hour}</p>
               <CourseWidget color={getBgColor(course)} course={course} />
             </div>
@@ -45,7 +45,7 @@ const CoursesList = () => {
         <h2>Środa</h2>
         {filteredCoursesByDay?.wednesday?.map((course: Course) => {
           return (
-            <div className="w-full grid grid-cols-2">
+            <div key={course.id} className="w-full grid grid-cols-2">
               <p className="">{course.hour}</p>
               <CourseWidget color={getBgColor(course)} course={course} />
             </div>
@@ -56,7 +56,7 @@ const CoursesList = () => {
         <h2>Czwartek</h2>
         {filteredCoursesByDay?.thursday?.map((course: Course) => {
           return (
-            <div className="w-full grid grid-cols-2">
+            <div key={course.id} className="w-full grid grid-cols-2">
               <p className="">{course.hour}</p>
               <CourseWidget color={getBgColor(course)} course={course} />
             </div>
@@ -67,7 +67,7 @@ const CoursesList = () => {
         <h2>Piątek</h2>
         {filteredCoursesByDay?.friday?.map((course: Course) => {
           return (
-            <div className="w-full grid grid-cols-2">
+            <div key={course.id} className="w-full grid grid-cols-2">
               <p className="">{course.hour}</p>
               <CourseWidget color={getBgColor(course)} course={course} />
             </div>
