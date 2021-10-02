@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  filterCoursesByDay,
-  filterCoursesByGroup,
-} from "../redux/dispatchers/filterCourses";
+import { useSelector } from "react-redux";
+
 import { Course } from "../utils/types";
 import CourseWidget from "./course";
 
