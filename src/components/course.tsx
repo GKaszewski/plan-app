@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Course } from "../utils/types";
 
 interface Props {
@@ -5,6 +6,10 @@ interface Props {
   course: Course;
 }
 const CourseWidget = (props: Props) => {
+  useEffect(() => {
+    console.log(`Course: ${props.course}`);
+  }, []);
+
   return (
     <div
       className={`${props.color} flex flex-col shadow-lg p-1 text-xs break-words whitespace-pre-wrap`}

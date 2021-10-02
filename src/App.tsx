@@ -1,39 +1,33 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import CourseWidget from "./components/course";
-import Grid from "./components/grid";
+import { useDispatch, useSelector } from "react-redux";
+import CoursesList from "./components/coursesList";
+import {
+  filterCoursesByDay,
+  filterCoursesByGroup,
+} from "./redux/dispatchers/filterCourses";
 import { fetchCourses } from "./utils/apiCalls";
 import { Course } from "./utils/types";
 
 function App() {
   const [selectedGroup, setSelectedGroup] = useState("");
-  const [allCourses, setAllCourses] = useState<Course[]>();
-  const { data: courses, refetch } = useQuery<Course[], Error>(
-    "courses",
-    fetchCourses
+  const { data: courses } = useQuery<Course[], Error>("courses", fetchCourses);
+  const { filteredCoursesByGroup } = useSelector(
+    (state: any) => state.courseReducer
   );
-
-  const getFilteredData = (courses: Course[]) => {
-    let _courses = [] as Course[];
-    console.log(selectedGroup);
-
-    courses?.forEach((course) => {
-      if (course.group === selectedGroup || course.group === "") {
-        _courses.push(course);
-      }
-    });
-    setAllCourses(_courses);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getFilteredData(courses!);
+    dispatch(filterCoursesByGroup(courses, selectedGroup));
+    dispatch(filterCoursesByDay(filteredCoursesByGroup));
   }, [courses, selectedGroup]);
   return (
     <div className="flex flex-col min-h-screen h-full w-full bg-indigo-300 items-center">
-      <div className="flex flex-col gap-1 self-start m-2">
+      <div className="flex flex-col gap-1 self-start m-2 bg-pink-100 rounded-lg p-2">
         <h4 className="font-semibold">Legenda</h4>
         <p>
-          Wykłady zdalnie - <span className="text-green-400">zielony</span>
+          Wykłady zdalnie -{" "}
+          <span className="text-green-400 drop-shadow-lg">zielony</span>
         </p>
         <p>
           Wykłady stacj. - <span className="text-blue-400">niebieski</span>
@@ -64,7 +58,7 @@ function App() {
         </select>
       </div>
       <div className="m-2">
-        <Grid courses={allCourses!} />
+        <CoursesList />
       </div>
     </div>
   );

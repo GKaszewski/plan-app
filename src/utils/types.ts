@@ -13,3 +13,11 @@ export interface Course {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface FilteredCoursesByDay {
+  monday: Course[];
+  tuesday: Course[];
+  wednesday: Course[];
+  thursday: Course[];
+  friday: Course[];
+}
