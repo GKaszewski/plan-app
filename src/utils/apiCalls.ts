@@ -9,9 +9,12 @@ export const fetchCourses = () => {
   });
 };
 
-export const fetchCoursesWithGroups = (groups: string) => {
+export const fetchCoursesWithGroups = (groups: string, calculus: string) => {
   return axios
-    .post<Course[]>(`${BASE_URL}/api/plan/groups`, { groups: groups })
+    .post<Course[]>(`${BASE_URL}/api/plan/groups`, {
+      groups: groups,
+      calculus: calculus,
+    })
     .then((res) => {
       return res.data;
     });
