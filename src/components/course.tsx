@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Course } from "../utils/types";
+import Info from "./info";
 
 interface Props {
   color: string;
@@ -24,6 +26,7 @@ const CourseWidget = (props: Props) => {
           Sala: <span className="font-semibold">{props.course.room}</span>
         </p>
       )}
+      {props.course.notes && <Info className="" course={props.course} />}
     </div>
   );
 };
