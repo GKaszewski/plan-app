@@ -25,16 +25,11 @@ function App() {
     const initialValue = JSON.parse(saved!);
     return initialValue || "A";
   });
-  const [calculusGroup, setCalculusGroup] = useState(() => {
-    const saved = localStorage.getItem("calculusGroup");
-    const initialValue = JSON.parse(saved!);
-    return initialValue || "I";
-  });
   const [group, setGroup] = useState("");
   const { data: courses, refetch } = useQuery<Course[], Error>(
-    ["courses", group, calculusGroup],
+    ["courses", group],
     () => {
-      return fetchCoursesWithGroups(group, calculusGroup);
+      return fetchCoursesWithGroups(group);
     },
     { enabled: false }
   );
@@ -54,7 +49,7 @@ function App() {
 
   useEffect(() => {
     refetch();
-  }, [group, calculusGroup]);
+  }, [group]);
 
   useEffect(() => {
     dispatch(filterCoursesByDay(courses));
@@ -71,10 +66,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("selectedGroup3", JSON.stringify(selectedGroup3));
   }, [selectedGroup3]);
-
-  useEffect(() => {
-    localStorage.setItem("calculusGroup", JSON.stringify(calculusGroup));
-  }, [calculusGroup]);
 
   return (
     <div className="flex flex-col min-h-screen h-full w-full bg-indigo-300 items-center">
@@ -105,35 +96,16 @@ function App() {
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4">4</option>
           </select>
-          <select
+          {/* <select
             value={selectedGroup2}
             onChange={(e) => setSelectedGroup2(e.target.value)}
             className="w-16 h-8 outline-none"
           >
             <option value="I">I</option>
             <option value="II">II</option>
-          </select>
-          <select
-            value={selectedGroup3}
-            onChange={(e) => setSelectedGroup3(e.target.value)}
-            className="w-16 h-8 outline-none"
-          >
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </select>
+          </select> */}
         </div>
-        <p>Calculus grupa:</p>
-        <select
-          value={calculusGroup}
-          onChange={(e) => setCalculusGroup(e.target.value)}
-          className="w-16 h-8 outline-none"
-        >
-          <option value="I">I</option>
-          <option value="II">II</option>
-        </select>
       </div>
       <div className="m-2">
         <CoursesList />

@@ -9,11 +9,11 @@ export const fetchCourses = () => {
   });
 };
 
-export const fetchCoursesWithGroups = (groups: string, calculus: string) => {
+export const fetchCoursesWithGroups = (groups: string) => {
   return axios
     .post<Course[]>(`${BASE_URL}/api/plan/groups`, {
       groups: groups,
-      calculus: calculus,
+      calculus: ''
     })
     .then((res) => {
       return res.data;
