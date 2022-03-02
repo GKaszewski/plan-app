@@ -97,14 +97,16 @@ function App() {
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
-          {/* <select
+          <p className="text-xl">Laboratoria</p>
+          <select
             value={selectedGroup2}
             onChange={(e) => setSelectedGroup2(e.target.value)}
             className="w-16 h-8 outline-none"
           >
-            <option value="I">I</option>
-            <option value="II">II</option>
-          </select> */}
+            <option value="1lab">1</option>
+            <option value="2lab">2</option>
+            <option value="3lab">3</option>
+          </select>
         </div>
       </div>
       <div className="m-2">
