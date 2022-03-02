@@ -95,7 +95,6 @@ function App() {
           >
             <option value="1">1</option>
             <option value="2">2</option>
-            <option value="3">3</option>
           </select>
           <p className="text-xl">Laboratoria</p>
           <select
